@@ -6,7 +6,7 @@ This is an app to be submitted as a part of the Flutter Assessments for hiring p
 
 1. Clone the repository
 ```
-https://github.com/aamit2267/urban-culture-assignment.git
+git clone https://github.com/aamit2267/urban-culture-assignment.git
 ```
 
 2. Install dependencies
