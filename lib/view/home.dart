@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:assessment_app/res/colors.dart';
 import 'package:assessment_app/res/fonts.dart';
 import 'package:assessment_app/viewmodel/daily_routine_view_model.dart';

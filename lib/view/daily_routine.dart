@@ -27,36 +27,13 @@ class DailyRoutine extends StatelessWidget {
           itemCount: viewModel.dailyRoutine!.length,
           itemBuilder: (context, index) {
             return RoutineItem(
-              routineItem:
-                  RoutineItemModel.fromJson(viewModel.dailyRoutine![index]),
+              routineItem: RoutineItemModel.fromJson(
+                viewModel.dailyRoutine![index],
+              ),
             );
           },
         );
       }),
     );
-
-    // return FutureBuilder(
-    //     future: getData(),
-    //     builder: (context, snapshot) {
-    //       if (snapshot.connectionState == ConnectionState.waiting) {
-    //         return const Center(
-    //           child: CircularProgressIndicator(),
-    //         );
-    //       }
-    //       try {
-    // return ListView.builder(
-    //   itemCount: snapshot.data!.length,
-    //   itemBuilder: (context, index) {
-    //     return RoutineItem(
-    //       routineItem: RoutineItemModel.fromJson(snapshot.data![index]),
-    //     );
-    //           },
-    //         );
-    //       } catch (e) {
-    //         return const Center(
-    //           child: Text('Something went wrong'),
-    //         );
-    //       }
-    //     });
   }
 }

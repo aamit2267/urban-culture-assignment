@@ -6,5 +6,5 @@ class AppColor {
   static Color secondarytextColor = const Color(0xFF964F66);
   static Color checkButtonColor = const Color(0xFFF2E8EB);
   static Color greenStatusColor = const Color(0xFF088759);
-  static Color linkColor = Color.fromARGB(255, 60, 115, 192);
+  static Color linkColor = const Color.fromARGB(255, 60, 115, 192);
 }

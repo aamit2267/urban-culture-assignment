@@ -38,6 +38,7 @@ class DailyRoutineViewModel extends ChangeNotifier {
     if (pref.containsKey(cacheKey)) {
       final data = jsonDecode(pref.getString(cacheKey)!);
       resetTimestamp(data);
+      resetImagePath(data);
       _dailyRoutine = data;
       _isLoading = false;
       notifyListeners();
@@ -99,7 +100,33 @@ class DailyRoutineViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> checkStreak() async {}
+  Future<void> updateImage(String imageUrl, String name) async {
+    final index =
+        _dailyRoutine!.indexWhere((element) => element['name'] == name);
+    _dailyRoutine![index]['imagePath'] = imageUrl;
+    CollectionReference collectionRef =
+        FirebaseFirestore.instance.collection('users');
+    DocumentSnapshot documentSnapshot =
+        await collectionRef.doc('jAiBaTIxkxPbfmYdn57pFdgOe2D3').get();
+    documentSnapshot.reference.update({'daily_routine': _dailyRoutine});
+    saveDataToCache(_dailyRoutine!);
+    notifyListeners();
+  }
+
+  Future<void> resetImagePath(List<dynamic> data) async {
+    for (var item in data) {
+      if (item['imagePath'] != "Null") {
+        item['imagePath'] = "Null";
+        CollectionReference collectionRef =
+            FirebaseFirestore.instance.collection('users');
+        DocumentSnapshot documentSnapshot =
+            await collectionRef.doc('jAiBaTIxkxPbfmYdn57pFdgOe2D3').get();
+        documentSnapshot.reference.update({'daily_routine': data});
+      }
+    }
+    await saveDataToCache(data);
+    notifyListeners();
+  }
 }
 
 
